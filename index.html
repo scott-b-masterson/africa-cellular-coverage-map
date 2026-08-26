@@ -1,1 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
 
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="A map of reported 2G, 3G, and 4G cellular coverage in Africa using GSMA Mobile Coverage Explorer releases from 2012 through 2018."
+  >
+
+  <title>GSMA Reported Cellular Data Coverage in Africa</title>
+
+  <style>
+    :root {
+      --navy: #17365d;
+      --blue: #2f6fab;
+      --light-blue: #eaf2f8;
+      --background: #f4f6f8;
+      --text: #222222;
+      --muted: #5c6570;
+      --border: #d6dbe1;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--navy);
+      color: var(--white);
+      padding: 42px 24px;
+    }
+
+    .header-content {
+      width: min(1200px, 100%);
+      margin: 0 auto;
+    }
+
+    header h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.15;
+    }
+
+    header p {
+      max-width: 850px;
+      margin: 0;
+      font-size: 1.08rem;
+      color: #e7edf5;
+    }
+
+    main {
+      width: min(1200px, calc(100% - 32px));
+      margin: 32px auto;
+    }
+
+    section {
+      margin-bottom: 28px;
+      padding: 28px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    h2 {
+      margin-top: 0;
+      color: var(--navy);
+      line-height: 1.25;
+    }
+
+    h3 {
+      color: var(--navy);
+    }
+
+    a {
+      color: #075eaa;
+    }
+
+    a:hover,
+    a:focus {
+      color: #003f73;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 22px 0;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 11px 17px;
+      border-radius: 5px;
+      background: var(--blue);
+      color: var(--white);
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .button:hover,
+    .button:focus {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .secondary-button {
+      border: 1px solid var(--blue);
+      background: var(--white);
+      color: var(--blue);
+    }
+
+    .secondary-button:hover,
+    .secondary-button:focus {
+      background: var(--light-blue);
+      color: var(--navy);
+    }
+
+    .notice {
+      margin: 20px 0;
+      padding: 14px 16px;
+      border-left: 4px solid var(--blue);
+      background: var(--light-blue);
+    }
+
+    .pdf-container {
+      width: 100%;
+      height: min(80vh, 950px);
+      min-height: 650px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: #eeeeee;
+    }
+
+    .pdf-container iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    ul {
+      padding-left: 24px;
+    }
+
+    .definition-list {
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      gap: 8px 18px;
+    }
+
+    .definition-list dt {
+      font-weight: bold;
+    }
+
+    .definition-list dd {
+      margin: 0;
+    }
+
+    .citation {
+      padding: 18px;
+      border-left: 4px solid var(--navy);
+      background: #f7f8fa;
+    }
+
+    .small-text {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 28px 20px;
+      background: #e6e9ed;
+      color: #3e4650;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 700px) {
+      main {
+        width: min(100% - 20px, 1200px);
+        margin-top: 18px;
+      }
+
+      section {
+        padding: 20px;
+      }
+
+      header {
+        padding: 30px 20px;
+      }
+
+      .pdf-container {
+        height: 600px;
+        min-height: 500px;
+      }
+
+      .definition-list {
+        display: block;
+      }
+
+      .definition-list dt {
+        margin-top: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="header-content">
+      <h1>GSMA Reported Cellular Data Coverage in Africa</h1>
+
+      <p>
+        A harmonized map of reported 2G, 3G, and 4G mobile network
+        coverage across the 2012 through 2018 GSMA Mobile Coverage
+        Explorer releases.
+      </p>
+    </div>
+  </header>
+
+  <main>
+
+    <section aria-labelledby="map-heading">
+      <h2 id="map-heading">Map</h2>
+
+      <p>
+        This figure shows the geographic extent of operator-reported
+        2G, 3G, and 4G coverage included in annual GSMA releases.
+        Areas classified as having either strong or variable signal
+        were combined into a single mapped coverage category and
+        aligned to a common 1 km grid.
+      </p>
+
+      <p>
+        The figure displays 2012 through 2018 because this is the
+        common period for all three technologies. Available 2G and
+        3G releases from 2007 through 2011 were omitted from the
+        figure for formatting purposes.
+      </p>
+
+      <div class="button-row">
+        <a
+          class="button"
+          href="GSMA_all_data_coverage_2012_2018.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Open the full-resolution PDF
+        </a>
+
+        <a
+          class="button secondary-button"
+          href="GSMA_all_data_coverage_2012_2018.pdf"
+          download
+        >
+          Download the PDF
+        </a>
+      </div>
+
+      <div class="notice">
+        The PDF is approximately 19.5 MB and may take several seconds
+        to appear. If the embedded viewer does not load, use the
+        button above to open or download the file.
+      </div>
+
+      <div class="pdf-container">
+        <iframe
+          src="GSMA_all_data_coverage_2012_2018.pdf"
+          title="GSMA reported cellular data coverage in Africa, 2012 through 2018"
+          loading="lazy"
+        >
+          Your browser cannot display the embedded PDF.
+          <a href="GSMA_all_data_coverage_2012_2018.pdf">
+            Open the PDF directly.
+          </a>
+        </iframe>
+      </div>
+    </section>
+
+    <section aria-labelledby="description-heading">
+      <h2 id="description-heading">Description and interpretation</h2>
+
+      <p>
+        Each panel represents the coverage reported in a particular
+        annual GSMA release. It does not represent only the coverage
+        added during that year. The named release year generally
+        reflects operator information received through approximately
+        the end of the preceding calendar year. For example, the 2016
+        release includes operator information received through
+        approximately the end of 2015.
+      </p>
+
+      <p>
+        The source rasters classify covered areas using two signal
+        categories:
+      </p>
+
+      <dl class="definition-list">
+        <dt>Value 1</dt>
+        <dd>Strong signal strength</dd>
+
+        <dt>Value 2</dt>
+        <dd>Variable signal strength</dd>
+      </dl>
+
+      <p>
+        Both source categories were combined for this map. As a
+        result, each colored area represents any mapped coverage,
+        whether the original source classified the signal as strong
+        or variable. The final figure does not distinguish between
+        those two classes.
+      </p>
+
+      <p>
+        The map is intended to show the spatial and temporal coverage
+        of the available source data. It does not measure subscriber
+        adoption, individual mobile phone use, network speed, or
+        signal quality experienced by users. It is also not based on
+        an independent field measurement of cellular signal at every
+        location.
+      </p>
+    </section>
+
+    <section aria-labelledby="limitations-heading">
+      <h2 id="limitations-heading">Data limitations</h2>
+
+      <p>
+        The cellular coverage data were sourced from network operator
+        submissions. The source metadata state that not every operator
+        submitted information, which creates inevitable gaps in the
+        coverage records.
+      </p>
+
+      <p>
+        Differences between annual releases may therefore reflect
+        changes in operator participation, reporting, source
+        submissions, or product construction, as well as actual
+        changes in cellular networks. An area without mapped coverage
+        does not necessarily indicate that cellular service was
+        unavailable.
+      </p>
+
+      <p>
+        One notable example is the broad reported 4G footprint in the
+        2016 release, followed by substantially less mapped coverage in
+        the 2017 release. This pattern is also visible in the original
+        online source maps. It was retained as a feature of the
+        published data rather than adjusted to impose increasing
+        coverage over time.
+      </p>
+    </section>
+
+    <section aria-labelledby="processing-heading">
+      <h2 id="processing-heading">Spatial processing</h2>
+
+      <p>
+        The original releases included a mixture of vector and raster
+        formats. The data were processed in ArcGIS Pro to create a
+        consistent annual series for Africa. The main processing steps
+        included:
+      </p>
+
+      <ul>
+        <li>
+          Selecting one source dataset for each available technology
+          and release year
+        </li>
+        <li>
+          Confirming and correcting coordinate system metadata where
+          necessary
+        </li>
+        <li>
+          Projecting the data to Africa Albers Equal Area Conic
+        </li>
+        <li>
+          Aligning all outputs to a common 1 km equal-area grid
+        </li>
+        <li>
+          Using nearest-neighbor resampling for categorical raster
+          values
+        </li>
+        <li>
+          Combining strong and variable signal classes into a single
+          mapped coverage category
+        </li>
+        <li>
+          Applying a consistent African land boundary and raster mask
+        </li>
+      </ul>
+
+      <p>The harmonized output uses the following convention:</p>
+
+      <dl class="definition-list">
+        <dt>1</dt>
+        <dd>
+          Strong or variable coverage mapped in the annual release
+        </dd>
+
+        <dt>0</dt>
+        <dd>
+          No coverage mapped in the annual release within the African
+          study area
+        </dd>
+
+        <dt>NoData</dt>
+        <dd>Location outside the African study area</dd>
+      </dl>
+
+      <p>
+        A value of zero should be interpreted as no coverage mapped in
+        the release, not as confirmed evidence that cellular service
+        was unavailable.
+      </p>
+    </section>
+
+    <section aria-labelledby="sources-heading">
+      <h2 id="sources-heading">Data sources and credit</h2>
+
+      <h3>Cellular coverage data</h3>
+
+      <p>
+        The underlying mobile coverage data were obtained through
+        <a
+          href="https://earthworks.stanford.edu/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Stanford EarthWorks</a>,
+        Stanford University Libraries' geospatial data discovery
+        platform.
+      </p>
+
+      <p>
+        The GSMA Mobile Coverage Explorer records used for this work
+        can be located through the following EarthWorks catalog search:
+      </p>
+
+      <p>
+        <a
+          href="https://earthworks.stanford.edu/?q=gsma&amp;search_field=all_fields&amp;sort=gbl_indexYear_im+desc%2C+dct_title_sort+asc"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Browse GSMA Mobile Coverage Explorer records in Stanford
+          EarthWorks
+        </a>
+      </p>
+
+      <p>
+        According to the source metadata, the coverage information was
+        sourced from network operators through
+        <a
+          href="https://www.gsma.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >GSMA</a>
+        and Collins Bartholomew. Users should consult each individual
+        EarthWorks record for release-specific metadata, rights
+        statements, access conditions, and preferred citations.
+      </p>
+
+      <h3>Country boundaries</h3>
+
+      <p>
+        The African study boundary was derived from the
+        <a
+          href="https://hub.arcgis.com/datasets/esri::world-countries/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Esri World Countries</a>
+        dataset.
+      </p>
+
+      <h3>Processing and cartography</h3>
+
+      <p>
+        Data processing and cartography were completed by
+        <strong>Scott Masterson</strong> using ArcGIS Pro.
+      </p>
+    </section>
+
+    <section aria-labelledby="citation-heading">
+      <h2 id="citation-heading">Suggested citation</h2>
+
+      <div class="citation">
+        Masterson, Scott. 2026. “GSMA Reported Cellular Data Coverage
+        in Africa.” Map created from GSMA Mobile Coverage Explorer
+        annual releases distributed through Stanford EarthWorks.
+      </div>
+
+      <p class="small-text">
+        Underlying data: GSMA and Collins Bartholomew, Mobile Coverage
+        Explorer annual releases, distributed through Stanford
+        EarthWorks, Stanford University Libraries.
+      </p>
+    </section>
+
+    <section aria-labelledby="rights-heading">
+      <h2 id="rights-heading">Rights and reuse</h2>
+
+      <p>
+        This webpage presents a derived cartographic visualization.
+        Rights in the original Mobile Coverage Explorer datasets
+        remain with their publishers and other applicable rights
+        holders. The original source rasters and vector datasets are
+        not distributed through this repository.
+      </p>
+
+      <p>
+        Anyone interested in obtaining the underlying data should use
+        the individual records available through
+        <a
+          href="https://earthworks.stanford.edu/?q=gsma&amp;search_field=all_fields&amp;sort=gbl_indexYear_im+desc%2C+dct_title_sort+asc"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Stanford EarthWorks</a>
+        and follow the access and reuse conditions listed for each
+        record.
+      </p>
+
+      <p class="small-text">
+        This is an independent research and cartographic product. It
+        should not be interpreted as an official publication or
+        endorsement by GSMA, Collins Bartholomew, Stanford University,
+        Stanford University Libraries, Esri, or their affiliates.
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    Created by Scott Masterson using ArcGIS Pro.
+  </footer>
+
+</body>
+</html>
