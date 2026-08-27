@@ -13,6 +13,8 @@
     content="A map of reported 2G, 3G, and 4G cellular coverage in Africa using GSMA Mobile Coverage Explorer releases from 2012 through 2018."
   >
 
+  <meta name="author" content="Scott Masterson">
+
   <title>GSMA Reported Cellular Data Coverage in Africa</title>
 
   <style>
@@ -43,10 +45,42 @@
       line-height: 1.6;
     }
 
+    a {
+      color: #075eaa;
+    }
+
+    a:hover,
+    a:focus {
+      color: #003f73;
+    }
+
+    .top-nav {
+      background: #102944;
+      color: var(--white);
+    }
+
+    .top-nav-content {
+      display: flex;
+      width: min(1200px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 12px 0;
+    }
+
+    .top-nav a {
+      color: var(--white);
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .top-nav a:hover,
+    .top-nav a:focus {
+      text-decoration: underline;
+    }
+
     header {
+      padding: 42px 24px;
       background: var(--navy);
       color: var(--white);
-      padding: 42px 24px;
     }
 
     .header-content {
@@ -63,8 +97,8 @@
     header p {
       max-width: 850px;
       margin: 0;
-      font-size: 1.08rem;
       color: #e7edf5;
+      font-size: 1.08rem;
     }
 
     main {
@@ -89,15 +123,6 @@
 
     h3 {
       color: var(--navy);
-    }
-
-    a {
-      color: #075eaa;
-    }
-
-    a:hover,
-    a:focus {
-      color: #003f73;
     }
 
     .button-row {
@@ -197,6 +222,10 @@
       font-size: 0.9rem;
     }
 
+    footer a {
+      font-weight: bold;
+    }
+
     @media (max-width: 700px) {
       main {
         width: min(100% - 20px, 1200px);
@@ -228,6 +257,14 @@
 </head>
 
 <body>
+
+  <nav class="top-nav" aria-label="Main navigation">
+    <div class="top-nav-content">
+      <a href="https://scott-masterson.com/">
+        ← Return to Scott Masterson's website
+      </a>
+    </div>
+  </nav>
 
   <header>
     <div class="header-content">
@@ -278,6 +315,13 @@
         >
           Download the PDF
         </a>
+
+        <a
+          class="button secondary-button"
+          href="https://scott-masterson.com/"
+        >
+          Visit Scott Masterson's website
+        </a>
       </div>
 
       <div class="notice">
@@ -327,11 +371,10 @@
       </dl>
 
       <p>
-        Both source categories were combined for this map. As a
-        result, each colored area represents any mapped coverage,
-        whether the original source classified the signal as strong
-        or variable. The final figure does not distinguish between
-        those two classes.
+        Both source categories were combined for this map. Each
+        colored area therefore represents mapped coverage, whether
+        the source classified the signal as strong or variable. The
+        final figure does not distinguish between the two classes.
       </p>
 
       <p>
@@ -339,7 +382,7 @@
         of the available source data. It does not measure subscriber
         adoption, individual mobile phone use, network speed, or
         signal quality experienced by users. It is also not based on
-        an independent field measurement of cellular signal at every
+        independent field measurements of cellular signal at every
         location.
       </p>
     </section>
@@ -365,10 +408,10 @@
 
       <p>
         One notable example is the broad reported 4G footprint in the
-        2016 release, followed by substantially less mapped coverage in
-        the 2017 release. This pattern is also visible in the original
-        online source maps. It was retained as a feature of the
-        published data rather than adjusted to impose increasing
+        2016 release, followed by substantially less mapped coverage
+        in the 2017 release. This pattern is also visible in the
+        original online source maps. It was retained as a feature of
+        the published data rather than adjusted to impose increasing
         coverage over time.
       </p>
     </section>
@@ -399,8 +442,7 @@
           Aligning all outputs to a common 1 km equal-area grid
         </li>
         <li>
-          Using nearest-neighbor resampling for categorical raster
-          values
+          Using nearest-neighbor resampling for categorical values
         </li>
         <li>
           Combining strong and variable signal classes into a single
@@ -453,8 +495,8 @@
       </p>
 
       <p>
-        The GSMA Mobile Coverage Explorer records used for this work
-        can be located through the following EarthWorks catalog search:
+        The GSMA Mobile Coverage Explorer records can be found through
+        the following catalog search:
       </p>
 
       <p>
@@ -476,9 +518,9 @@
           target="_blank"
           rel="noopener noreferrer"
         >GSMA</a>
-        and Collins Bartholomew. Users should consult each individual
-        EarthWorks record for release-specific metadata, rights
-        statements, access conditions, and preferred citations.
+        and Collins Bartholomew. Users should consult each EarthWorks
+        record for release-specific metadata, rights statements,
+        access conditions, and preferred citations.
       </p>
 
       <h3>Country boundaries</h3>
@@ -497,7 +539,10 @@
 
       <p>
         Data processing and cartography were completed by
-        <strong>Scott Masterson</strong> using ArcGIS Pro.
+        <a href="https://scott-masterson.com/">
+          <strong>Scott Masterson</strong>
+        </a>
+        using ArcGIS Pro.
       </p>
     </section>
 
@@ -508,6 +553,9 @@
         Masterson, Scott. 2026. “GSMA Reported Cellular Data Coverage
         in Africa.” Map created from GSMA Mobile Coverage Explorer
         annual releases distributed through Stanford EarthWorks.
+        <a href="https://scott-masterson.com/">
+          https://scott-masterson.com/
+        </a>
       </div>
 
       <p class="small-text">
@@ -544,14 +592,16 @@
         This is an independent research and cartographic product. It
         should not be interpreted as an official publication or
         endorsement by GSMA, Collins Bartholomew, Stanford University,
-        Stanford University Libraries, Esri, or their affiliates.
+        Stanford University Libraries, or Esri.
       </p>
     </section>
 
   </main>
 
   <footer>
-    Created by Scott Masterson using ArcGIS Pro.
+    Created by
+    <a href="https://scott-masterson.com/">Scott Masterson</a>
+    using ArcGIS Pro.
   </footer>
 
 </body>
