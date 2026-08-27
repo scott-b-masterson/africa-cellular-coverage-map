@@ -54,29 +54,6 @@
       color: #003f73;
     }
 
-    .top-nav {
-      background: #102944;
-      color: var(--white);
-    }
-
-    .top-nav-content {
-      display: flex;
-      width: min(1200px, calc(100% - 32px));
-      margin: 0 auto;
-      padding: 12px 0;
-    }
-
-    .top-nav a {
-      color: var(--white);
-      font-weight: bold;
-      text-decoration: none;
-    }
-
-    .top-nav a:hover,
-    .top-nav a:focus {
-      text-decoration: underline;
-    }
-
     header {
       padding: 42px 24px;
       background: var(--navy);
@@ -258,14 +235,6 @@
 
 <body>
 
-  <nav class="top-nav" aria-label="Main navigation">
-    <div class="top-nav-content">
-      <a href="https://scott-masterson.com/">
-        ← Return to Scott Masterson's website
-      </a>
-    </div>
-  </nav>
-
   <header>
     <div class="header-content">
       <h1>GSMA Reported Cellular Data Coverage in Africa</h1>
@@ -315,19 +284,12 @@
         >
           Download the PDF
         </a>
-
-        <a
-          class="button secondary-button"
-          href="https://scott-masterson.com/"
-        >
-          Visit Scott Masterson's website
-        </a>
       </div>
 
       <div class="notice">
         The PDF is approximately 19.5 MB and may take several seconds
-        to appear. If the embedded viewer does not load, use the
-        button above to open or download the file.
+        to appear. If the embedded viewer does not load, use one of
+        the buttons above to open or download the file.
       </div>
 
       <div class="pdf-container">
@@ -489,14 +451,16 @@
           href="https://earthworks.stanford.edu/"
           target="_blank"
           rel="noopener noreferrer"
-        >Stanford EarthWorks</a>,
+        >
+          Stanford EarthWorks
+        </a>,
         Stanford University Libraries' geospatial data discovery
         platform.
       </p>
 
       <p>
         The GSMA Mobile Coverage Explorer records can be found through
-        the following catalog search:
+        the following EarthWorks catalog search:
       </p>
 
       <p>
@@ -517,7 +481,9 @@
           href="https://www.gsma.com/"
           target="_blank"
           rel="noopener noreferrer"
-        >GSMA</a>
+        >
+          GSMA
+        </a>
         and Collins Bartholomew. Users should consult each EarthWorks
         record for release-specific metadata, rights statements,
         access conditions, and preferred citations.
@@ -531,7 +497,9 @@
           href="https://hub.arcgis.com/datasets/esri::world-countries/"
           target="_blank"
           rel="noopener noreferrer"
-        >Esri World Countries</a>
+        >
+          Esri World Countries
+        </a>
         dataset.
       </p>
 
@@ -539,7 +507,11 @@
 
       <p>
         Data processing and cartography were completed by
-        <a href="https://scott-masterson.com/">
+        <a
+          href="https://scott-masterson.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <strong>Scott Masterson</strong>
         </a>
         using ArcGIS Pro.
@@ -553,9 +525,6 @@
         Masterson, Scott. 2026. “GSMA Reported Cellular Data Coverage
         in Africa.” Map created from GSMA Mobile Coverage Explorer
         annual releases distributed through Stanford EarthWorks.
-        <a href="https://scott-masterson.com/">
-          https://scott-masterson.com/
-        </a>
       </div>
 
       <p class="small-text">
@@ -583,7 +552,9 @@
           href="https://earthworks.stanford.edu/?q=gsma&amp;search_field=all_fields&amp;sort=gbl_indexYear_im+desc%2C+dct_title_sort+asc"
           target="_blank"
           rel="noopener noreferrer"
-        >Stanford EarthWorks</a>
+        >
+          Stanford EarthWorks
+        </a>
         and follow the access and reuse conditions listed for each
         record.
       </p>
@@ -600,7 +571,13 @@
 
   <footer>
     Created by
-    <a href="https://scott-masterson.com/">Scott Masterson</a>
+    <a
+      href="https://scott-masterson.com/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Scott Masterson
+    </a>
     using ArcGIS Pro.
   </footer>
 
